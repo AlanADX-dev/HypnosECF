@@ -1,3 +1,4 @@
+    /* css general */
     * {
         margin: 0;
         padding: 0;
@@ -10,11 +11,11 @@
     
     body {
         font-family: sans-serif;
-        /* background: darkslategray; */
+        background: darkslategray;
     }
     
     header {
-        position: absolute;
+        position: sticky;
         width: 100%;
         height: 8vh;
         top: 0;
@@ -22,6 +23,7 @@
         background: darkslategrey;
         color: #fff;
         padding: 0 2rem;
+        z-index: 1;
     }
     
     nav {
@@ -32,6 +34,7 @@
         align-items: center;
     }
     
+    /* menu et banner */
     .logo {
         max-width: 69px;
     }
@@ -55,7 +58,7 @@
     
     .btn {
         border: 0;
-        background: goldenrod;
+        background: #916f10;
         font-size: 1rem;
         padding: 0.5rem 1rem;
         border-radius: 20px;
@@ -63,42 +66,191 @@
     
     .btn.btn-secondary {
         background: transparent;
-        border: 2px solid goldenrod;
+        border: 2px solid #916f10;
         color: #fff;
     }
     
     
-    .background {
+    .banner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: start;
         height: 100vh;
         line-height: 100vh;
         background: url('./images/background.jpg');
         background-repeat: no-repeat;
-        background-size: cover;
-        background-position: top;
-        z-index: 1;
-        display: flexbox;
+        background-position: center;
+        z-index: 0;
     }
 
-    h1 {
-        z-index: 2;
+    .banner h1 {
+        z-index: 0;
         height: 5em;
-        font-size: large;
         color: white;
         font-size: 6rem;
-        text-align: center;
+        animation-name: titleEffect;
+        -webkit-animation: titleEffect 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+	    animation: titleEffect 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
     }
+
+    @-webkit-keyframes titleEffect {
+        0% {
+          letter-spacing: 1em;
+          -webkit-transform: translateZ(400px);
+                  transform: translateZ(400px);
+          opacity: 0;
+        }
+        40% {
+          opacity: 0.6;
+        }
+        100% {
+          -webkit-transform: translateZ(0);
+                  transform: translateZ(0);
+          opacity: 1;
+        }
+      }
+      @keyframes titleEffect {
+        0% {
+          letter-spacing: 1em;
+          -webkit-transform: translateZ(400px);
+                  transform: translateZ(400px);
+          opacity: 0;
+        }
+        40% {
+          opacity: 0.6;
+        }
+        100% {
+          -webkit-transform: translateZ(0);
+                  transform: translateZ(0);
+          opacity: 1;
+        }
+      }
+
 
     .arrow {
-        position: absolute;
-        z-index: 2;
+        z-index: 0;
         height: 5em;
-        font-size: large;
         color: white;
         font-size: 2rem;
-        align-content: center;
+        position: relative;
+        bottom: 100px;
+        animation-name: arrowJump;
+        animation-duration: 1s;
+        animation-delay: 0s;
+        animation-iteration-count: infinite;
+    }
+
+    @keyframes arrowJump {
+        0% {
+            -webkit-transform: translate3d(0px, 0px, 0px);
+            transform: translate3d(0px, 0px, 0px);
+        }
+        50% {
+            -webkit-transform: translate3d(0px, 10px, 0px);
+            transform: translate3d(0px, 10px, 0px);
+        }
+        100% {
+            -webkit-transform: translate3d(0px, 0px, 0px);
+            transform: translate3d(0px, 0px, 0px);
+        }
+    }
+
+    /* main content */
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 1.3rem;
+    }
+
+    .intro {
+        display: inline;
+        flex-direction: column;
+        background-color: #916f10;
+        width: 15vw;
+        height: auto;
+        margin-top: 4vh;
+        text-align: center;
+        text-justify: inter-word;
+        color:white;
+        border-radius: 0% 0% 10% 0%;
+    }
+    .introPart1 {
+        margin-top: 1vh;
+        margin-bottom: 4vh;
+    }
+    .introPart2 {
+        margin-bottom: 1vh;
+    }
+
+    .container .card1 {
+        display: inline-flex;
+        margin-top: 4vh;
+    }
+
+    .container .card2 {
+        display: inline-flex;
+        margin-top: 4vh;
 
     }
+
+    .container .card3 {
+        display: inline-flex;
+        margin-top: 4vh;
+
+    }
+
+    .container .pic1 {
+        width: 40vw;
+
+
+        
+    }
+
+    .container .pic2 {
+        width: 40vw;
+
+        
+    }
+
+    .container .pic3 {
+        width: 40vw;
+
+        
+    }
+
+    .container .textCard1 {
+        width: 40vw;
+        background-color: #37393A;
+        
+    }
+    .container .textCard2 {
+        width: 30vw;
+        background-color: antiquewhite;
+
+        
+    }
+    .container .textCard3 {
+        width: 40vw;
+        background-color: #C7D3DD;
+
+        
+    }
+
+
+
+
+
+
+
+
+
+
     
+
+    /* responsive */
+
     @media all and (max-width: 975px) {
     
         .toggle {
@@ -156,5 +308,19 @@
     
         .open .menu {
             transform: translateY(0);
+        }
+        .intro {
+            width: 90vw;
+        }
+        .container .card {
+            display: block;
+        }
+        
+        .container .pic {
+            width: 90vw; 
+        }
+        
+        .container .textCard {
+            width: 90vw;
         }
     }
